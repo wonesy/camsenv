@@ -1,0 +1,15 @@
+[user]
+	name = Cameron Jones
+	email = camandrewjones@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.gitignore
+[alias]
+	st = status
+	co = checkout
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short

@@ -1,0 +1,17 @@
+# Object Files
+*.o
+*.bin
+*.ko
+*.obj
+*.pyc
+*.swp
+*.class
+
+# Libraries
+*.so
+*.a
+*.lib
+
+# bin folders
+*/bin/*
+tags
