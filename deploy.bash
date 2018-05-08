@@ -8,15 +8,18 @@ GITDIR=gitdir
 #
 mkdir -p ${HOME}/.vim
 cp ${VIMDIR}/.vimrc ${HOME}
-cp -r ${VIMDIR}/.vim/colors ${HOME}/.vim
+cp -r ${VIMDIR}/colors ${HOME}/.vim
+
 
 VIMBUNDLE=${HOME}/.vim/bundle/
 if [[ ! -d ${VIMBUNDLE} ]]; then
     mkdir -p ${VIMBUNDLE}
+    sudo apt-get install python
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    vim +PluginInstall +qall
+    ~/.vim/bundle/YouCompleteMe/install.py
 fi
 
-vim +PluginInstall +qall
 
 #
 # Bash/Zsh Environment
