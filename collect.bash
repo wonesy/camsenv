@@ -1,5 +1,5 @@
 #!/bin/bash
-VIMDIR=vimeniv
+VIMDIR=vimenv
 SHDIR=shdir
 GITDIR=gitdir
 
@@ -10,13 +10,17 @@ cp -fr ~/.vim/colors $VIMDIR
 
 # Bash/Zsh Environment
 mkdir -p $SHDIR
-cp -f ~/.bash_profile $SHDIR
-cp -f ~/.zshrc $SHDIR
 cp -f ~/.zprofile $SHDIR
 cp -f ~/.oh-my-zsh/themes/steeef.zsh-theme $SHDIR
 
-# Git Encironment
+# Git Environment
 mkdir -p $GITDIR
-cp -f ~/.gitignore $GITDIR
-cp -f ~/.gitconfig $GITDIR
+
+if [[ -a ~/.gitignore ]]; then
+    cp -f ~/.gitignore $GITDIR
+fi
+
+if [[ -a ~/.gitconfig ]]; then
+    cp -f ~/.gitconfig $GITDIR
+fi
 

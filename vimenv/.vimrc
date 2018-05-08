@@ -19,15 +19,17 @@ map <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 "              Vundle Shit                "
 """""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" This is the Vundle package, which can be found on GitHub.
-" For GitHub repos, you specify plugins using the
-" 'user/repository' format
-Plugin 'gmarik/vundle'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " We could also add repositories with a ".git" extension
 Plugin 'scrooloose/nerdtree.git'
@@ -45,5 +47,8 @@ Plugin 'tpope/vim-fugitive'
 " Cool status lines
 Plugin 'bling/vim-airline'
 
-" Now we can turn our filetype functionality back on
-filetype plugin indent on
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+

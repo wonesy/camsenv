@@ -19,7 +19,7 @@ setopt prompt_subst
 autoload -U add-zsh-hook
 autoload -Uz vcs_info
 
-#use extended color pallete if available
+#use extended color palette if available
 if [[ $terminfo[colors] -ge 256 ]]; then
     turquoise="%F{81}"
     orange="%F{166}"
@@ -51,8 +51,8 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 PR_RST="%f"
 FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
 FMT_ACTION="(%{$limegreen%}%a${PR_RST})"
-FMT_UNSTAGED="%{$orange%} ●"
-FMT_STAGED="%{$limegreen%} ●"
+FMT_UNSTAGED="%{$orange%}● "
+FMT_STAGED="%{$limegreen%}● "
 
 zstyle ':vcs_info:*:prompt:*' unstagedstr   "${FMT_UNSTAGED}"
 zstyle ':vcs_info:*:prompt:*' stagedstr     "${FMT_STAGED}"
@@ -62,7 +62,7 @@ zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
 
 function steeef_preexec {
-    case "$(history $HISTCMD)" in
+    case "$2" in
         *git*)
             PR_GIT_UPDATE=1
             ;;
@@ -83,7 +83,7 @@ function steeef_precmd {
         # check for untracked files or updated submodules, since vcs_info doesn't
         if git ls-files --other --exclude-standard 2> /dev/null | grep -q "."; then
             PR_GIT_UPDATE=1
-            FMT_BRANCH="(%{$turquoise%}%b%u%c%{$hotpink%}●${PR_RST})"
+            FMT_BRANCH="(%{$turquoise%}%b%u%c%{$hotpink%}● ${PR_RST})"
         else
             FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
         fi
@@ -96,5 +96,5 @@ function steeef_precmd {
 add-zsh-hook precmd steeef_precmd
 
 PROMPT=$'
-%{$purple%}%n${PR_RST} %{$orange%}@${PR_RST} %{$limegreen%}%4~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
+%{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
 $ '

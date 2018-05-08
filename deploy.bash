@@ -1,5 +1,5 @@
 #!/bin/bash
-VIMDIR=vimeniv
+VIMDIR=vimenv
 SHDIR=shdir
 GITDIR=gitdir
 
@@ -8,12 +8,12 @@ GITDIR=gitdir
 #
 mkdir -p ${HOME}/.vim
 cp ${VIMDIR}/.vimrc ${HOME}
-cp -r ${VIMDIR}/colors ${HOME}/.vim
+cp -r ${VIMDIR}/.vim/colors ${HOME}/.vim
 
 VIMBUNDLE=${HOME}/.vim/bundle/
-if [[ ! -d ${VIMBUNDLE}/vundle ]]; then
+if [[ ! -d ${VIMBUNDLE} ]]; then
     mkdir -p ${VIMBUNDLE}
-    git clone https://github.com/gmarik/vundle.git ${VIMBUNDLE}
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
 vim +PluginInstall +qall
@@ -21,13 +21,13 @@ vim +PluginInstall +qall
 #
 # Bash/Zsh Environment
 #
-cp ${SHDIR}/.bash_profile ${HOME}
-cp ${SHDIR}/.zshrc ${HOME}
 cp ${SHDIR}/.zprofile ${HOME}
 
 OHMY=${HOME}/.oh-my-zsh
 if [[ ! -d ${OHMY} ]]; then
-    git clone https://github.com/robbyrussell/oh-my-zsh.git ${HOME}
+    sudo apt-get install curl zsh
+    sudo chsh -s $(which zsh)
+    curl -L http://install.ohmyz.sh | sh
 fi
 
 cp ${SHDIR}/themes/steeef.zsh-theme ${SHDIR}
