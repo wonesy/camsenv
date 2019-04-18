@@ -1,6 +1,23 @@
 alias up='cd .. && ls'
 alias c='clear'
-alias hist='history'
+alias h='history'
+alias vim='vim -p'
+alias killgnome='killall -3 gnome-shell'
+alias gtl='cs $(git rev-parse --show-toplevel)'
+alias fn='find . -name'
+alias asearch='apt-cache search'
+
+
+export EDITOR=vim
+export PATH=$PATH:~/tools/genymotion:~/.local/bin:~/.bin
+
+# virtualenvwrapper settings
+export WORKON_HOME=~/.venvs
+source /home/cam/.local/bin/virtualenvwrapper.sh
+
+# golang settings
+export GOPATH=~/code/go
+export PATH=$PATH:$GOPATH/bin
 
 function cs() {
     cd $1 && ls
